@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./App.css";
 
 const gitHubUrl = "https://api.github.com/users/deekshasharma";
@@ -7,13 +8,17 @@ function App() {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    getGitHubUserWithFetch();
+    getGiHubUserWithAxios();
   }, []);
 
-  const getGitHubUserWithFetch = async () => {
-    const response = await fetch(gitHubUrl);
-    const jsonData = await response.json();
-    setUserData(jsonData);
+  // const getGitHubUserWithFetch = async () => {
+  //   const response = await fetch(gitHubUrl);
+  //   const jsonData = await response.json();
+  //   setUserData(jsonData);
+  // };
+  const getGiHubUserWithAxios = async () => {
+    const response = await axios.get(gitHubUrl);
+    setUserData(response.data);
   };
 
   return (
