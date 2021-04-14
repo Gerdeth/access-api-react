@@ -10,7 +10,11 @@ function App() {
     getGitHubUserWithFetch();
   }, []);
 
-  const getGitHubUserWithFetch = async () => {};
+  const getGitHubUserWithFetch = async () => {
+    const response = await fetch(gitHubUrl);
+    const jsonData = await response.json();
+    setUserData(jsonData);
+  };
 
   return (
     <div className="App">
